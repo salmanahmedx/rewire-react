@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
+import GlobalStyles from "./components/GlobalStyles";
 import Home from "./pages/Home";
 
 function App() {
 
   return (
     <div className="App">
-      <h1>Hello Rewire</h1>
+      <GlobalStyles></GlobalStyles>
       <Home></Home>
     </div>
   );
