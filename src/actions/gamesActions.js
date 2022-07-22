@@ -20,3 +20,6 @@ export const loadGames = () => async (dispatch) => {
     })
 
 }
+
+
+//REDUX-THUNK allows us to asynchronously fetch data. REDUX doesn't allow asynchronous fetching.
