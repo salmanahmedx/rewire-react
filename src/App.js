@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>Hello Rewire</h1>
+      <Home></Home>
     </div>
   );
 }
