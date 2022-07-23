@@ -11,7 +11,7 @@ html{
         width: 0.5rem;
     }
     &::-webkit-scrollbar-thumb{
-        background-color: darkgray;
+        background-color: darkgrey;
     }
 }
 body{

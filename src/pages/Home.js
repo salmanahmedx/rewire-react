@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import GameDetail from '../components/GameDetail';
 //REDUX
 import { loadGames } from '../actions/gamesActions';
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +22,7 @@ const Home = () => {
 
     return (
         <GameList>
+            <GameDetail></GameDetail>
             <h2>Upcoming Games</h2>
             <Games>
                 {

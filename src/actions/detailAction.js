@@ -13,4 +13,4 @@ export const loadDetail = (id) => async (dispatch) => {
     })
 }
 
-//REDUX-THUNK allows us to asynchronously fetch data. REDUX doesn't allow asynchronous fetching.
+//REDUX-THUNK allows us to asynchronously fetch data. REDUX doesn't allow asynchronous fetching. While using thunk, we use double arrow function
