@@ -1,4 +1,6 @@
-const initialState = { game: {}, screen: {} };
+const initialState = { game: { platforms: [] }, screen: { results: [] } };
+
+//map undefined? no array to map over. adding empty array in state solved the cannot map of undefined error.
 
 const detailReducer = (state = initialState, action) => {
     switch (action.type) {
