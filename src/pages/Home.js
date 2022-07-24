@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Game from '../components/Game';
 //style components and framer motion
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
 const Home = () => {
     //current location
@@ -26,9 +26,11 @@ const Home = () => {
 
     return (
         <GameList>
-            {
-                pathId && <GameDetail />
-            }
+            <AnimatePresence>
+                {
+                    pathId && <GameDetail pathId={pathId} />
+                }
+            </AnimatePresence>
 
             <h2>Upcoming Games</h2>
             <Games>
