@@ -1,24 +1,75 @@
-import React from 'react';
-//style components and framer motion
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-//Redux
-import { useSelector } from 'react-redux';
+// React
+import React from "react";
+// Styled Components
+import styled from "styled-components";
+// Framer Motion
+import { motion } from "framer-motion";
+// Redux
+import { useSelector } from "react-redux";
+// Router
 import { useNavigate } from "react-router-dom";
+// images
+import playstation from "../img/playstation.svg";
+import steam from "../img/steam.svg";
+import xbox from "../img/xbox.svg";
+import nintendo from "../img/nintendo.svg";
+import apple from "../img/apple.svg";
+import gamepad from "../img/gamepad.svg";
+import starEmpty from "../img/star-empty.png";
+import starFull from "../img/star-full.png";
 
 const GameDetail = ({ pathId }) => {
-    const navigate = useNavigate()
-    //exit detail handler
+    const navigate = useNavigate();
+    const { screen, game, isLoading } = useSelector((state) => state.detail);
+
     const exitDetailHandler = (e) => {
         const element = e.target;
-        console.log(element)
-        if (element.classList.contains("shadow")) {
-            document.body.style.overflow = "auto"
-            navigate("/")
-        }
-    }
 
-    const { screen, game, isLoading } = useSelector(state => state.detail)
+        if (element.classList.contains("shadow")) {
+            document.body.style.overflow = "auto";
+            navigate("/");
+        }
+    };
+
+    const getPlatform = (platform) => {
+        switch (platform) {
+            case "PlayStation 4":
+                return playstation;
+
+            case "PlayStation 5":
+                return playstation;
+
+            case "Xbox Series S/X":
+                return xbox;
+
+            case "Xbox One":
+                return xbox;
+
+            case "PC":
+                return steam;
+
+            case "Nintendo Switch":
+                return nintendo;
+
+            default:
+                return gamepad;
+        }
+    };
+
+    const getStars = () => {
+        const stars = [];
+        const rating = Math.floor(game.rating);
+
+        for (let i = 1; i <= 5; i++) {
+            if (i <= rating) {
+                stars.push(<img alt="star" key={i} src={starFull} />);
+            } else {
+                stars.push(<img alt="star" key={i} src={starEmpty} />);
+            }
+        }
+
+        return stars;
+    };
 
     return (
         <>
@@ -28,7 +79,7 @@ const GameDetail = ({ pathId }) => {
                         <Stats>
                             <div className="rating">
                                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
-                                {game.rating}
+                                {game.rating === 0 ? <p>Not rated</p> : getStars()}
                             </div>
                             <Info>
                                 <h3>Platforms</h3>
@@ -36,7 +87,7 @@ const GameDetail = ({ pathId }) => {
                                     {game.platforms.map((data) => (
                                         <img
                                             key={data.platform.id}
-                                            src={data.platform.name}
+                                            src={getPlatform(data.platform.name)}
                                             alt={data.platform.name}
                                         />
                                     ))}
@@ -142,3 +193,4 @@ const Description = styled(motion.div)`
 `;
 
 export default GameDetail;
+
