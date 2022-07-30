@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Game from '../components/Game';
 //style components and framer motion
 import styled from 'styled-components';
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Home = () => {
     //current location
