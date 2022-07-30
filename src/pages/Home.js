@@ -9,6 +9,7 @@ import Game from '../components/Game';
 //style components and framer motion
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { fadeIn, popup } from '../animation';
 
 const Home = () => {
     //current location
@@ -25,7 +26,7 @@ const Home = () => {
     const { popular, newGames, upcoming, searched } = useSelector(state => state.games);
 
     return (
-        <GameList>
+        <GameList variants={fadeIn} initial="hidden" animate="show">
             <AnimatePresence>
                 {
                     pathId && <GameDetail pathId={pathId} />
